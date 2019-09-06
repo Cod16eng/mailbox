@@ -5,6 +5,7 @@ class CreatePosts < ActiveRecord::Migration[5.1]
       t.string :attachment
       t.string :sender
       t.date :received
+      t.integer :company_id
 
       t.timestamps
     end
