@@ -4,9 +4,9 @@ class PostsController < ApplicationController
   def index
     
   	if current_user.admin?
-      @post = Post.all
+      @posts = Post.all
     else
-      @post = Post.where(company_id: current_user.companies)
+      @posts = Post.where(company_id: current_user.companies)
     end
   end
    
