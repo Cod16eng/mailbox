@@ -1,0 +1,55 @@
+<%= render 'shared/errors', obj: @mail %>
+<div class="container">
+	<div class="row center add-user-form">
+		<div class="col s12 m12 l12">
+			<div class="card-panel ">
+				<h3 class="header">All mail</h3>
+				<div class="row">        
+					<%= form_for(@mail, html: {class: "col s12", multipart: true }) do |f| %>
+						<div class="row">
+							<div class="input-field col s12">	
+								<%= f.collection_select :company_id, Company.all, :id, :name, { prompt: "Select Company"} %>								
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								<%= f.text_field :name, placeholder: "Mail Name" %>		
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								<%= f.text_field :sender, placeholder: "Sender"%>				
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								<%= f.date_field :received, placeholder: "Sender"%>				
+							</div>
+						</div>
+						<div class="row">
+							<div class="file-field input-field">
+					      <div class="btn">
+					        <span>File</span>
+					        <%= f.file_field :attachment, placeholder: "Upload one or more files", class: "file-path validate" %>
+					      </div>
+					      <div class="file-path-wrapper">
+					        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+					      </div>
+					  </div>
+						
+						<div class="row">
+							<div class="input-field col s12">
+						      <%= f.button '<i class="material-icons right">arrow_forward</i>Upload'.html_safe, class: 'waves-effect waves-light btn-small'%>
+							</div>
+						</div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+    
+
+

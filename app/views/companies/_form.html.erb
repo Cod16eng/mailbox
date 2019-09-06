@@ -1,0 +1,32 @@
+<%= render 'shared/errors', obj: @company %>
+<div class="container">
+	<div class="row center add-user-form">
+		<div class="col s12 m12 l12">
+			<div class="card-panel ">
+				<h3 class="header"><%= @company.new_record? ? "Add Company" : "Edit Company" %></h3>
+				<div class="row">        
+					<%= form_for(@company, html: {class: "col s12" }) do |f| %>
+						<div class="row">
+							<div class="input-field col s12">
+								<%= f.text_field :name, placeholder: "Company Name", autofocus: true %>
+								
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">	
+								<%= f.collection_select :user_id, User.all, :id, :username, { prompt: "Select Username"} %>								
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="input-field col s12">
+						<%= f.button( @company.new_record? ? 
+						'<i class="material-icons right">arrow_forward</i>Create Company'.html_safe : '<i class="material-icons right">arrow_forward</i>Update Company'.html_safe, class: 'waves-effect waves-light btn-small') %>
+							</div>
+						</div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,32 @@
+<div class="row add-user-form">
+	<div class="col s12 m12 l12">
+		<div class="card blue-grey lighten-2 ">
+			<div class="card-content white-text">
+				<span class="card-title">User Name: <%= @user.username %></span>
+				<div class="col s6 m6 l6">
+				   <p>Email: <%= @user.email %></p>
+</div>
+<div class="col s6 m6 l6">
+				   <p>Companies</p>
+				   <ul >
+				   <% @user.companies.each do |user| %>
+
+				   <li><%=link_to user.name, company_path(user), class: "btn-small" %></li><br>
+				   <% end %>
+				   </ul>
+				</div>
+				   <br>
+				<div class="card-actions">
+					<% if current_user.admin? %>
+					<%= link_to '<i class="material-icons right">arrow_back</i>Back to All Users'.html_safe, users_path, class: 'waves-effect waves-light btn-small'  %>
+					<% else %>
+					<%= link_to '<i class="material-icons right">arrow_back</i>Back'.html_safe, companies_path, class: 'waves-effect waves-light btn-small'  %>			
+					<% end %>
+					<% if current_user == @user || current_user.admin? %>
+					<%= link_to '<i class="material-icons right">create</i>Edit profile'.html_safe, edit_user_path(@user), class: 'waves-effect waves-light btn-small right'  %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,43 @@
+
+<div class="row">
+	<div class="col s12">
+		<h3 class="center-align">All Mails</h3>
+		<% if current_user.admin? %>
+		<div><%= link_to "Upload Mail", new_mail_path, class: 'waves-effect waves-light btn-small right' %></div>
+		</div>
+		<% end %>
+	</div>
+
+
+<table class="highlight">
+	<thead>
+	  <tr>
+	  	  <th>Company</th>
+	      <th>Sender</th>
+	      <th>Name</th>
+	      <th>Received on</th>
+	      <th>View Mail</th>	            
+	      <th colspan="2">Actions</th>
+	       
+	  </tr>
+	</thead>
+
+	<tbody>
+		<% @mails.each do |mail|%>
+	  <tr>
+	    <td><%= mail.company.name %></td>
+	    <td><%= mail.sender %></td>
+	    <td><%= mail.name %></td>
+	    <td><%= mail.received %></td>
+	    <td><%= link_to "View or Download mail", mail.attachment_url %></td>	    
+	    <td><%= link_to '<i class="material-icons right">delete_forever</i>Delete'.html_safe, mail_path(mail), method: :delete, data:{confirm: "Are you sure"}, 
+	        class: 'waves-effect waves-light btn-small'  %></td>
+  					    
+	  </tr>
+	  <% end %>
+	</tbody>
+</table>
+
+            
+            
+   

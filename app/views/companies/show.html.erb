@@ -1,0 +1,15 @@
+<div class="row add-user-form">
+	<div class="col s12 m12 l12">
+		<div class="card blue-grey lighten-2 ">
+			<div class="card-content white-text">
+				<span class="card-title">Company Name:<%= @company.name %></span>
+				   <p>Owner: <%= @company.user.username %></p>
+				   <br>
+				<div class="card-actions">
+					<%= link_to '<i class="material-icons right">arrow_back</i>Back'.html_safe, companies_path, class: 'waves-effect waves-light btn-small'  %>		
+					<%= link_to '<i class="material-icons right">create</i>Edit profile'.html_safe, edit_company_path(@company), class: 'waves-effect waves-light btn-small right'  %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
