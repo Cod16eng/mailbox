@@ -8,7 +8,7 @@ class CompaniesController < ApplicationController
 		else
 			@companies = current_user.companies
 		end
-		@mails = Mail.all
+		
 	end
 
 	def new

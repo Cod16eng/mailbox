@@ -25,7 +25,7 @@
 	  <tr>
 	    <td><%= link_to company.name, company_path(company) %></td>
 	    <td><%= link_to company.user.username, user_path(company.user) %></td>
-	    <td><%= link_to company.mails.name, mails_path %></td>
+	    <td><%= link_to company.posts.name, posts_path %></td>
 	    <% if current_user.admin? %>
 	    <td><%= link_to '<i class="material-icons right">create</i>Edit Company'.html_safe, edit_company_path(company), class: 'waves-effect waves-light btn-small'  %></td>
 	    <td><%= link_to '<i class="material-icons right">delete_forever</i>Delete'.html_safe, company_path(company), method: :delete, 

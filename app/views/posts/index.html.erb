@@ -3,7 +3,7 @@
 	<div class="col s12">
 		<h3 class="center-align">All Mails</h3>
 		<% if current_user.admin? %>
-		<div><%= link_to "Upload Mail", new_mail_path, class: 'waves-effect waves-light btn-small right' %></div>
+		<div><%= link_to "Upload Mail", new_post_path, class: 'waves-effect waves-light btn-small right' %></div>
 		</div>
 		<% end %>
 	</div>
@@ -23,14 +23,14 @@
 	</thead>
 
 	<tbody>
-		<% @mails.each do |mail|%>
+		<% @posts.each do |mail|%>
 	  <tr>
 	    <td><%= mail.company.name %></td>
 	    <td><%= mail.sender %></td>
 	    <td><%= mail.name %></td>
 	    <td><%= mail.received %></td>
-	    <td><%= link_to "View or Download mail", mail.attachment_url %></td>	    
-	    <td><%= link_to '<i class="material-icons right">delete_forever</i>Delete'.html_safe, mail_path(mail), method: :delete, data:{confirm: "Are you sure"}, 
+	    <td><%= link_to "View or Download mail", post.attachment_url %></td>	    
+	    <td><%= link_to '<i class="material-icons right">delete_forever</i>Delete'.html_safe, post_path(post), method: :delete, data:{confirm: "Are you sure"}, 
 	        class: 'waves-effect waves-light btn-small'  %></td>
   					    
 	  </tr>
