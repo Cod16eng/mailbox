@@ -1,13 +1,32 @@
 
 <div class="row">
+	<div class="navbar-wrapper">	    
+	    <form>
+		    <%= form_tag posts_path, method: :get do %>
+				<div class="input-field col s10">		    
+				    <%= text_field_tag :search, params[:search], type: 'search', placeholder: "            Search for mail"  %>
+				        <label class="label-icon" for="search"></label>
+				        <i class="material-icons">search</i>      
+				                 
+				</div>
+				<div class="input-field col s2">
+				<%= submit_tag 'Search', class: 'waves-effect waves-light btn-small' %>
+				</div>		    
+			<% end %>
+		</form>
+	</div>
 	<div class="col s12">
 		<h3 class="center-align">All Mails</h3>
+			<div class="col s6"> <%= link_to '<i class="material-icons right">arrow_back</i>Back'.html_safe, companies_path, class: 'waves-effect waves-light btn-small'  %>
+			</div>
 		<% if current_user.admin? %>
-		<div><%= link_to "Upload Mail", new_post_path, class: 'waves-effect waves-light btn-small right' %></div>
-		</div>
+			<div class="col s6"><%= link_to "Upload Mail", new_post_path, class: 'waves-effect waves-light btn-small right' %>			
+			</div>		
 		<% end %>
 	</div>
 
+</div>
+	
 
 <table class="highlight">
 	<thead>
@@ -16,9 +35,10 @@
 	      <th>Sender</th>
 	      <th>Name</th>
 	      <th>Received on</th>
-	      <th>View Mail</th>	            
+	      <th>View Mail</th>
+	      <% if current_user.admin? %>	            
 	      <th colspan="2">Actions</th>
-	       
+	      <% end %> 
 	  </tr>
 	</thead>
 
@@ -29,15 +49,16 @@
 	    <td><%= post.sender %></td>
 	    <td><%= post.name %></td>
 	    <td><%= post.received %></td>
-	    <td><%= link_to "View or Download mail", post.attachment_url %></td>	    
+	    <td><%= link_to "View or Download", post.attachment_url %></td>
+	    <% if current_user.admin? %>	    
 	    <td><%= link_to '<i class="material-icons right">delete_forever</i>Delete'.html_safe, post_path(post), method: :delete, data:{confirm: "Are you sure"}, 
 	        class: 'waves-effect waves-light btn-small'  %></td>
-  					    
+  		<% end %>			    
 	  </tr>
 	  <% end %>
 	</tbody>
 </table>
 
-            
+  <div class="center-align"><%= will_paginate @posts %>  </div>        
             
    

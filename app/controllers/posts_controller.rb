@@ -4,9 +4,10 @@ class PostsController < ApplicationController
   def index
     
   	if current_user.admin?
-      @posts = Post.all
+
+      @posts = Post.search(params[:search]).paginate(page: params[:page], per_page: 10).order('received DESC')
     else
-      @posts = Post.where(company_id: current_user.companies)
+      @posts = Post.search(params[:search]).where(company_id: current_user.companies)
     end
   end
    
@@ -35,7 +36,7 @@ class PostsController < ApplicationController
    
    private
       def post_params
-      params.require(:post).permit(:name, :attachment, :sender, :received, :company_id)
+      params.require(:post).permit(:name, :attachment, :sender, :received, :company_id, :search)
    end
    
 end

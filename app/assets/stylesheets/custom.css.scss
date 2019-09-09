@@ -26,3 +26,9 @@ body {
   footer{
     margin-top: 50px;
   }
+
+ 
+.pagination li.active a {
+  background-color: #26a69a !important;
+  color: #fff;
+}

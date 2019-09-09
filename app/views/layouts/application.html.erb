@@ -12,8 +12,9 @@
 	  	<% unless controller_name == 'welcome' || controller_name == 'sessions' %>
 	  	  <%= render 'layouts/navbar' %>
 	  	<% end %>  	
-  	<main>
+  	<main>  			      
 	  	<div class="container">
+	  		
 	  		<%= render 'layouts/flashmsg' %>
 	      <%= yield %>
 		</div>

@@ -32,6 +32,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'materialize-sass', '~> 1.0.0'
 gem 'material_icons'
 gem 'jquery-rails'
+gem 'will_paginate-materialize', git: 'https://github.com/mldoscar/will_paginate-materialize', branch: 'master'
 
 
 # Use Capistrano for deployment
@@ -54,3 +55,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'carrierwave', '~> 0.9'
+gem 'fog-aws'
+

@@ -4,7 +4,7 @@ class CompaniesController < ApplicationController
 
 	def index
 		if current_user.admin?
-			@companies = Company.all.order(:name)
+			@companies = Company.search(params[:search]).paginate(page: params[:page], per_page: 5).order(:name)
 		else
 			@companies = current_user.companies
 		end

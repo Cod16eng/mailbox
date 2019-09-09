@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 	before_action :set_user, only: [:edit, :update, :show, :destroy]
 	skip_before_action :require_admin, only: [:show, :edit, :update]
 	def index		
-		@users = User.all.order(:username)
+		@users = User.search(params[:search]).paginate(page: params[:page], per_page: 3).order(:username)
 	end
 
 	def new

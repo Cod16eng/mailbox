@@ -15,4 +15,13 @@ class User < ApplicationRecord
 	          format: { with: VALID_EMAIL_REGEX }
 
 	has_secure_password
+
+	def self.search(search)
+	    users = all
+	  if search
+	    where('username ILIKE ? OR email ILIKE ?',"%#{search}%", "%#{search}%")
+	  else
+	    all
+	  end
+	end
 end
