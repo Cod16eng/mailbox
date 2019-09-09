@@ -1,4 +1,5 @@
 <div class="row">
+	<% if current_user.admin? %>
 	<div class="navbar-wrapper">	    
 	    <form>
 		    <%= form_tag companies_path, method: :get do %>
@@ -14,6 +15,7 @@
 			<% end %>
 		</form>
 	</div>
+	<% end %>
 	<div class="col s12">
 		<h3 class="center-align">All Companies</h3>
 		<% if current_user.admin? %>
@@ -50,6 +52,7 @@
 	  <% end %>
 	</tbody>
 </table>
-
+<% if current_user.admin? %>
 <div class="center-align"><%= will_paginate @companies %>  </div>
+<% end %>
 

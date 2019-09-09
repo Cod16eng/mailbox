@@ -7,7 +7,7 @@ class PostsController < ApplicationController
 
       @posts = Post.search(params[:search]).paginate(page: params[:page], per_page: 10).order('received DESC')
     else
-      @posts = Post.search(params[:search]).where(company_id: current_user.companies)
+      @posts = Post.search(params[:search]).where(company_id: current_user.companies).paginate(page: params[:page], per_page: 10).order('received DESC')
     end
   end
    
