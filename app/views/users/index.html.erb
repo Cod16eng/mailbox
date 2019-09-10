@@ -33,7 +33,7 @@
 <% @users.each do |user| %>
       <tr>
 	    <td><%= link_to user.username,  user_path(user) %></td>
-	    <td><%= mail_to user.email %></td>
+	    <td><%= mail_to user.email, user.email, :subject => "You have new post!", :body =>"Hello #{user.username}, today #{Date.today.strftime("%d %b %Y")} you haved received new mail. Please login to see your post  https://ascherimailbox.herokuapp.com/".html_safe %></td>
 	    <td><%= link_to '<i class="material-icons right">create</i>Edit profile'.html_safe, edit_user_path(user), class: 'waves-effect waves-light btn-small'  %></td>
 	    <td><%= link_to '<i class="material-icons right">delete_forever</i>Delete'.html_safe, user_path(user), method: :delete, 
   					    data:{confirm: "Are you sure"}, class: 'waves-effect waves-light btn-small'  %></td>

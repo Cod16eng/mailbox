@@ -35,9 +35,15 @@
 	      <th>Sender</th>
 	      <th>Name</th>
 	      <th>Received on</th>
+	      <% if current_user.admin? %>
+	      
+	      <th>Email User</th>
+	      <% end %> 
 	      <th>View Mail</th>
-	      <% if current_user.admin? %>	            
-	      <th colspan="2">Actions</th>
+	      <% if current_user.admin? %>
+	      
+	      	            
+	      <th>Actions</th>
 	      <% end %> 
 	  </tr>
 	</thead>
@@ -49,6 +55,9 @@
 	    <td><%= post.sender %></td>
 	    <td><%= post.name %></td>
 	    <td><%= post.received %></td>
+	    <% if current_user.admin? %>
+	    <td><%= mail_to post.company.user.email, post.company.user.email, :subject => "You have new post!", :body =>"Hello #{post.company.user.username}, today #{Date.today.strftime("%d %b %Y")} you haved received new mail. Please login to see your post  https://ascherimailbox.herokuapp.com/".html_safe %></td>
+	    <% end %>
 	    <td><%= link_to "View or Download", post.attachment_url %></td>
 	    <% if current_user.admin? %>	    
 	    <td><%= link_to '<i class="material-icons right">delete_forever</i>Delete'.html_safe, post_path(post), method: :delete, data:{confirm: "Are you sure"}, 
@@ -58,6 +67,7 @@
 	  <% end %>
 	</tbody>
 </table>
+
 
   <div class="center-align"><%= will_paginate @posts %>  </div>        
             

@@ -45,13 +45,19 @@ class UsersController < ApplicationController
 		
 	end
 
+
 	private
+	
 
 	def set_user
 		@user = User.find(params[:id])
 	end
 	
 	def user_params
-		params.require(:user).permit(:username, :email, :password, :password_confirmation, :admin)
+		# List of common params
+        list_params_allowed =[:username, :email, :password, :password_confirmation]
+        # Add the params only for admin
+  		list_params_allowed << :admin if current_user.admin?
+		params.require(:user).permit(list_params_allowed)
 	end
-end
+ end
