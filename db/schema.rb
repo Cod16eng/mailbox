@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190905150102) do
+ActiveRecord::Schema.define(version: 20190913072309) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20190905150102) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "mails", force: :cascade do |t|
+  create_table "posts", id: :bigint, default: -> { "nextval('mails_id_seq'::regclass)" }, force: :cascade do |t|
     t.string "name"
     t.string "attachment"
     t.string "sender"
@@ -39,6 +39,9 @@ ActiveRecord::Schema.define(version: 20190905150102) do
     t.datetime "updated_at", null: false
     t.string "password_digest"
     t.boolean "admin", default: false
+    t.string "first_name"
+    t.string "last_name"
+    t.boolean "not_paid", default: false
   end
 
 end

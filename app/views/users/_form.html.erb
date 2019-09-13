@@ -8,9 +8,15 @@
 					<%= form_for(@user, html: {class: "col s12" }) do |f| %>
 						<div class="row">
 							<div class="input-field col s12">
-								<%= f.text_field :username, placeholder: "Username", autofocus: true %>
+								<%= f.text_field :first_name, placeholder: "First Name", autofocus: true %>
 							</div>
 						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								<%= f.text_field :last_name, placeholder: "Last Name", autofocus: true %>
+							</div>
+						</div>
+						
 						<div class="row">
 							<div class="input-field col s12">	
 								<%= f.email_field :email, placeholder: "Email Address" %>
@@ -28,10 +34,16 @@
 						</div>
 						<% if current_user.admin? %>
 						<div class="row">
-							<div class="input-field col s12">
+							<div class="input-field col s6">
 								<label>	
 									<%= f.check_box :admin %>
 									<span>Admin?</span>
+								</label>										
+							</div>
+							<div class="input-field col s6">
+								<label>	
+									<%= f.check_box :not_paid %>
+									<span>Not paid?</span>
 								</label>										
 							</div>
 						</div>

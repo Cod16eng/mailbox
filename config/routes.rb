@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   	root 'welcome#index'
+  	get 'notpaid', to: 'welcome#need_to_pay'
 	resources :companies
 	resources :users
 

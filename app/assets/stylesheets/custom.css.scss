@@ -32,3 +32,17 @@ body {
   background-color: #26a69a !important;
   color: #fff;
 }
+
+.btn.waves-effect {
+    height: auto;
+    min-height: 20px;
+    line-height: 20px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+@media #{$medium-and-down} {
+   i {
+    display: none !important;
+  }
+  }

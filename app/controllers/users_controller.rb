@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 	before_action :set_user, only: [:edit, :update, :show, :destroy]
 	skip_before_action :require_admin, only: [:show, :edit, :update]
 	def index		
-		@users = User.search(params[:search]).paginate(page: params[:page], per_page: 10).order(:username)
+		@users = User.search(params[:search]).paginate(page: params[:page], per_page: 10).order(:last_name)
 	end
 
 	def new
@@ -55,9 +55,9 @@ class UsersController < ApplicationController
 	
 	def user_params
 		# List of common params
-        list_params_allowed =[:username, :email, :password, :password_confirmation]
+        list_params_allowed =[:username, :first_name, :last_name, :email, :password, :password_confirmation]
         # Add the params only for admin
-  		list_params_allowed << :admin if current_user.admin?
+  		list_params_allowed << [:admin, :not_paid] if current_user.admin?
 		params.require(:user).permit(list_params_allowed)
 	end
  end

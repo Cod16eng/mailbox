@@ -4,4 +4,7 @@ class WelcomeController < ApplicationController
 	def index
 		
 	end
+	def need_to_pay
+		
+	end
 end
