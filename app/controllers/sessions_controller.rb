@@ -7,7 +7,7 @@ skip_before_action :require_admin
 
 	def create
 		user = User.find_by(email: params[:sessions][:email].downcase)
-		if user && user.authenticate(params[:sessions][:password]) && user.not_paid
+		if user && user.authenticate(params[:sessions][:password]) && user.not_paid == true
 			session[:user_id] = user.id			
 			redirect_to notpaid_path
 		elsif user && user.authenticate(params[:sessions][:password])
