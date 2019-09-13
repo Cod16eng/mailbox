@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :set_post, only: [:edit, :update, :show, :destroy]
   skip_before_action :require_admin, only: [:index, :show]
 
   def index
@@ -19,22 +20,39 @@ class PostsController < ApplicationController
       @post = Post.new(post_params)
       
       if @post.save
-      	flash[:notice] = "The resume #{@post.name} has been uploaded."
+      	flash[:notice] = "The #{@post.name} has been uploaded."
          redirect_to posts_path
       else
          render "new"
       end
       
    end
+   def edit
+     
+   end
+
+   def update
+    if @post.update(post_params)      
+      flash[:notice] = "The#{@post.name} was  updated"
+      redirect_to posts_path
+    else
+      render 'new'
+    end
+    
+  end
    
    def destroy
-      @post = Post.find(params[:id])
+      
       @post.destroy
       flash[:notice] = "The resume #{@post.name} has been deleted."
       redirect_to posts_path  
    end
    
    private
+
+    def set_post
+    @user = Post.find(params[:id])
+  end
       def post_params
       params.require(:post).permit(:name, :attachment, :sender, :received, :company_id, :search)
    end
