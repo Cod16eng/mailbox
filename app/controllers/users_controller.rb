@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(user_params)
 		if @user.save		  
-		  flash[:notice] = "User added #{@user.username}"
+		  flash[:notice] = "User added #{@user.name}"
 		  redirect_to users_path
 		else
 		  render 'new'
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
 	def update
 		if @user.update(user_params)		  
-		  flash[:notice] = "Profile of #{@user.username} was  updated"
+		  flash[:notice] = "Profile of #{@user.name} was  updated"
 		  redirect_to user_path(@user)
 		else
 		  render 'new'
