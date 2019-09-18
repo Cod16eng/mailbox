@@ -51,11 +51,11 @@ class PostsController < ApplicationController
    private
 
     def set_post
-    @user = Post.find(params[:id])
-  end
-      def post_params
+      @post = Post.find(params[:id])
+    end
+    def post_params
       params.require(:post).permit(:name, :attachment, :sender, :received, :company_id, :search)
-   end
+    end
    
 end
 

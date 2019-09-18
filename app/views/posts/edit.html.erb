@@ -1,11 +1,11 @@
-<%= render 'shared/errors', obj: @post %>
+
 <div class="container">
 	<div class="row center add-user-form">
 		<div class="col s12 m12 l12">
 			<div class="card-panel ">
 				<h3 class="header">New mail</h3>
 				<div class="row">        
-					<%= form_for(@post, html: {class: "col s12", multipart: true }) do |f| %>
+					<%= form_for(@post, html: {class: "col s12"}) do |f| %>
 						<div class="row">
 							<div class="input-field col s12">	
 								<%= f.collection_select :company_id, Company.all, :id, :name, { prompt: "Select Company"} %>								
@@ -36,7 +36,8 @@
 						        <input class="file-path validate" type="text" placeholder="Upload one or more files">
 						      </div>
 							</div>
-					    </div>						
+					    </div>
+										
 						<div class="row">
 							<div class="input-field col s12">
 						      <%= f.button '<i class="material-icons right">arrow_forward</i>Upload'.html_safe, class: 'waves-effect waves-light btn-small'%>
