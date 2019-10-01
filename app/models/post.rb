@@ -10,7 +10,7 @@ class Post < ApplicationRecord
     def self.search(search)
 	    posts = all
 	  if search
-	    where('name ILIKE ? OR sender ILIKE ? OR cast(received to text) ILIKE ?',"%#{search}%", "%#{search}%", "%#{search}%")
+	    where('name ILIKE ? OR sender ILIKE ? OR cast(received as text) ILIKE ?',"%#{search}%", "%#{search}%", "%#{search}%")
 	  else
 	    all
 	  end
