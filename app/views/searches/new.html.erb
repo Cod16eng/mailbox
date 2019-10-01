@@ -1,0 +1,23 @@
+<h1>Advanced Search</h1>
+
+<%= form_for @search do |f| %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :company_id %><br />
+    <%= f.collection_select :company_id, Company.order(:name), :id, :name, include_blank: true %>
+  </div>
+  <div class="field">
+    <%= f.label :sender %><br />
+    <%= f.text_field :sender %>
+    
+  </div>
+  <div class="field">
+    <%= f.label :received, "Received On" %><br />
+    <%= f.date_field :received %>
+    
+  </div>
+  <div class="actions"><%= f.submit "Search" %></div>
+<% end %>

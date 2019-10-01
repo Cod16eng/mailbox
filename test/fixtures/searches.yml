@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  keywords: MyString
+  sender: MyString
+  name: MyString
+  received: 2019-10-01
+  company_id: 1
+
+two:
+  keywords: MyString
+  sender: MyString
+  name: MyString
+  received: 2019-10-01
+  company_id: 1

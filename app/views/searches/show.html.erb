@@ -1,0 +1,22 @@
+<h1>Search Results</h1>
+
+<table class="highlight">
+	<thead>
+	  <tr>
+	  	  <th style="width:20%" >Company</th>
+	      <th>Sender</th>
+	      <th>Name</th>
+	      <th>Received on</th>
+	      <% if current_user.admin? %>	      	            
+	        <th colspan="3" class="center-align">Actions</th>
+	      <% end %>
+	  </tr>
+	</thead>
+
+	<tbody>
+
+<%= render @search.posts %>
+
+	</tbody>
+</table>
+<div class="center-align"><%= will_paginate @posts %>  </div>
