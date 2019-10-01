@@ -9,8 +9,9 @@ class SearchesController < ApplicationController
 	end
 
 	def show
+	  
 	  @search = Search.find(params[:id])
-	  @posts = Post.paginate(page: params[:page], per_page: 10).order('received DESC')
+
 	end
 
 

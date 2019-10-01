@@ -1,4 +1,4 @@
-<h1>Advanced Search</h1>
+<h1 class="center-align">Advanced Search</h1>
 
 <%= form_for @search do |f| %>
   <div class="field">
@@ -19,5 +19,5 @@
     <%= f.date_field :received %>
     
   </div>
-  <div class="actions"><%= f.submit "Search" %></div>
+  <div class="actions"><%= f.button '<i class="material-icons">search</i> Search'.html_safe, class: 'waves-effect waves-light btn-small' %></div>
 <% end %>
