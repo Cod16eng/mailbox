@@ -14,7 +14,7 @@
 						</div>
 						<div class="row">
 							<div class="input-field col s12">	
-								<%= f.collection_select :user_id, User.all, :id, :username, { prompt: "Select Username"} %>								
+								<%= f.collection_select :user_id, User.order(:last_name), :id, :name, { prompt: "Select User Name"} %>								
 							</div>
 						</div>
 
