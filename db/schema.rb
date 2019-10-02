@@ -22,14 +22,14 @@ ActiveRecord::Schema.define(version: 20191001100235) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "posts", id: :bigint, default: -> { "nextval('mails_id_seq'::regclass)" }, force: :cascade do |t|
+  create_table "posts", force: :cascade do |t|
     t.string "name"
     t.string "attachment"
     t.string "sender"
     t.date "received"
+    t.integer "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "company_id"
   end
 
   create_table "searches", force: :cascade do |t|
