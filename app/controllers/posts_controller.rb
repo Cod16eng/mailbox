@@ -6,7 +6,7 @@ class PostsController < ApplicationController
     
   	if current_user.admin?
 
-      @posts = Post.search(params[:search]).paginate(page: params[:page], per_page: 10).order('received DESC')
+      @posts = Post.paginate(page: params[:page], per_page: 10).order(created_at: :DESC)
     else
       @posts = Post.search(params[:search]).where(company_id: current_user.companies).paginate(page: params[:page], per_page: 10).order('received DESC')
     end
