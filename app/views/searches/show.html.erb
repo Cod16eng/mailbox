@@ -10,8 +10,10 @@
 	  	  <th style="width:20%" >Company</th>
 	      <th>Sender</th>
 	      <th>Name</th>
-	      <th>Received on</th>
-	      <% if current_user.admin? %>	      	            
+	      <th class="center-align">Received on</th>
+	      <th class="center-align">View Mail</th>
+	      <% if current_user.admin? %>
+	      <th class="center-align">Email</th>	      	            
 	        <th colspan="3" class="center-align">Actions</th>
 	      <% end %>
 	  </tr>
