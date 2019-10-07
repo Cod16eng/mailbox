@@ -1,5 +1,5 @@
 
-		
+
 	  <tr>
 	    <td><%= post.company.name %></td>
 	    <td><%= post.sender %></td>
@@ -7,18 +7,14 @@
 	    <td><%= post.received %></td>
 	    <td><%= link_to "View or Download", post.attachment_url %></td>
 	    <% if current_user.admin? %>
-	    <td><%= mail_to post.company.user.email, post.company.user.email, :subject => "You have new post!", :body =>"Hello #{post.company.user.username}, 
+	    <td><%= mail_to post.company.user.email, post.company.user.email, :subject => "Nouva corrispondenza!", :body =>"Buongiorno #{post.company.user.username},
 
-Today #{Date.today.strftime("%d %b %Y")} you have received new letter. 
+Oggi #{Date.today.strftime("%d %b %Y")} ha ricevuto nuova corrispondenza.
 
-Please login to see your post  https://ascherimailbox.herokuapp.com/".html_safe %></td>	    
-	    <td><%= link_to '<i class="material-icons right">create</i>Edit'.html_safe, edit_post_path(post), 
+Di seguito il link per effettuare l'accesso  https://ascherimailbox.herokuapp.com/" %></td>
+	    <td><%= link_to '<i class="material-icons right">create</i>Edit'.html_safe, edit_post_path(post),
 	        class: 'waves-effect waves-light btn-small'  %></td>
-	        <td><%= link_to '<i class="material-icons right">delete_forever</i>Delete'.html_safe, post_path(post), method: :delete, data:{confirm: "Are you sure"}, 
+	        <td><%= link_to '<i class="material-icons right">delete_forever</i>Delete'.html_safe, post_path(post), method: :delete, data:{confirm: "Are you sure"},
 	        class: 'waves-effect waves-light btn-small'  %></td>
-  		<% end %>	    
+  		<% end %>
 	  </tr>
-	  
-	
-
-  
