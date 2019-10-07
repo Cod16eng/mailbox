@@ -3,14 +3,14 @@
 	<div class="navbar-wrapper">
 	<% if current_user.admin? %>
 
-	<% else %>	    
+	<% else %>
 	    <form>
 		    <%= form_tag posts_path, method: :get do %>
-				<div class="input-field col s10">		    
+				<div class="input-field col s10">
 				    <%= text_field_tag :search, params[:search], type: 'search', placeholder: "            Search for mail by name or sender "  %>
 				        <label class="label-icon" for="search"></label>
-				        <i class="material-icons">search</i>      
-				                 
+				        <i class="material-icons">search</i>
+
 				</div>
 				<div class="input-field col s2">
 				<%= submit_tag 'Search', class: 'waves-effect waves-light btn-small' %>
@@ -26,9 +26,9 @@
 			<div class="col s6"> <%= link_to '<i class="material-icons right">arrow_back</i>Back'.html_safe, companies_path, class: 'waves-effect waves-light btn-small'  %>
 			</div>
 		<% if current_user.admin? %>
-			<div class="col s6"><%= link_to "Upload Mail", new_post_path, class: 'waves-effect waves-light btn-small right' %>			
+			<div class="col s6"><%= link_to "Upload Mail", new_post_path, class: 'waves-effect waves-light btn-small right' %>
 			</div>
-		<% end %>			
+		<% end %>
 	</div>
 </div>
 <% if current_user.admin? %>
@@ -51,15 +51,15 @@
 	      <th>Name</th>
 	      <th>Received on</th>
 	      <% if current_user.admin? %>
-	      
+
 	      <th>Email User</th>
-	      <% end %> 
+	      <% end %>
 	      <th>View Mail</th>
 	      <% if current_user.admin? %>
-	      
-	      	            
+
+
 	      <th colspan="2">Actions</th>
-	      <% end %> 
+	      <% end %>
 	  </tr>
 	</thead>
 
@@ -71,22 +71,24 @@
 	    <td><%= post.name %></td>
 	    <td><%= post.received %></td>
 	    <% if current_user.admin? %>
-	    <td><%= mail_to post.company.user.email, post.company.user.email, :subject => "You have new post!", :body =>"Hello #{post.company.user.username}, today #{Date.today.strftime("%d %b %Y")} you haved received new mail. Please login to see your post  https://ascherimailbox.herokuapp.com/".html_safe %></td>
+	    <td><%= mail_to post.company.user.email, post.company.user.email, :subject => "You have new post!", :body =>"Buongiorno #{post.company.user.username},
+
+Oggi #{Date.today.strftime("%d %b %Y")} ha ricevuto nuova corrispondenza.
+
+Di seguito il link per effettuare l'accesso  https://ascherimailbox.herokuapp.com/".html_safe %></td>
 	    <% end %>
 	    <td><%= link_to "View or Download", post.attachment_url %></td>
 	    <% if current_user.admin? %>
-	    	    
-	    <td><%= link_to '<i class="material-icons right">create</i>Edit'.html_safe, edit_post_path(post), 
+
+	    <td><%= link_to '<i class="material-icons right">create</i>Edit'.html_safe, edit_post_path(post),
 	        class: 'waves-effect waves-light btn-small'  %></td>
-	        <td><%= link_to '<i class="material-icons right">delete_forever</i>Delete'.html_safe, post_path(post), method: :delete, data:{confirm: "Are you sure"}, 
+	        <td><%= link_to '<i class="material-icons right">delete_forever</i>Delete'.html_safe, post_path(post), method: :delete, data:{confirm: "Are you sure"},
 	        class: 'waves-effect waves-light btn-small'  %></td>
-  		<% end %>			    
+  		<% end %>
 	  </tr>
 	  <% end %>
 	</tbody>
 </table>
 
 
-  <div class="center-align"><%= will_paginate @posts %>  </div>        
-            
-   
+  <div class="center-align"><%= will_paginate @posts %>  </div>
