@@ -9,7 +9,7 @@
 	    <% if current_user.admin? %>
 	    <td><%= mail_to post.company.user.email, post.company.user.email, :subject => "Nouva corrispondenza!", :body =>"Buongiorno #{post.company.user.username},
 
-Oggi #{Date.today.strftime("%d %b %Y")} ha ricevuto nuova corrispondenza.
+Oggi #{Date.today.strftime("%d %b %Y")} la societa' #{post.company.name} ha ricevuto nuova corrispondenza.
 
 Di seguito il link per effettuare l'accesso  https://ascherimailbox.herokuapp.com/" %></td>
 	    <td><%= link_to '<i class="material-icons right">create</i>Edit'.html_safe, edit_post_path(post),
