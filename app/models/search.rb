@@ -6,7 +6,7 @@ class Search < ApplicationRecord
 	private
 
 	def find_posts
-	  posts = Post.order('name')
+	  posts = Post.order('received')
 	  posts = posts.where("name ILIKE ?", "%#{keywords}%") if keywords.present?
 	  posts = posts.where(company_id: company_id) if company_id.present?
 	  posts = posts.where("sender ILIKE ?", "%#{sender}%") if sender.present?
