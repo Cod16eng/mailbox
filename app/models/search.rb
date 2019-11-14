@@ -14,3 +14,4 @@ class Search < ApplicationRecord
 	  posts
 	end
 end
+#
