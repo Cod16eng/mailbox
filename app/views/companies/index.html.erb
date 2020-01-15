@@ -1,17 +1,17 @@
 <div class="row">
 	<% if current_user.admin? %>
-	<div class="navbar-wrapper">	    
+	<div class="navbar-wrapper">
 	    <form>
 		    <%= form_tag companies_path, method: :get do %>
-				<div class="input-field col s10">		    
+				<div class="input-field col s10">
 				    <%= text_field_tag :search, params[:search], type: 'search', placeholder: "            Search by company name"  %>
 				        <label class="label-icon" for="search"></label>
-				        <i class="material-icons">search</i>      
-				                 
+				        <i class="material-icons">search</i>
+
 				</div>
 				<div class="input-field col s2">
 				<%= submit_tag 'Search', class: 'waves-effect waves-light btn-small' %>
-				</div>		    
+				</div>
 			<% end %>
 		</form>
 	</div>
@@ -31,7 +31,7 @@
 	      <th>Name</th>
 	      <th>Username</th>
 	      <th>Mail</th>
-	      <% if current_user.admin? %>      
+	      <% if current_user.admin? %>
 	      <th colspan="2">Actions</th>
 	       <% end %>
 	  </tr>
@@ -45,7 +45,7 @@
 	    <td><%= link_to company.posts.name, posts_path %></td>
 	    <% if current_user.admin? %>
 	    <td><%= link_to '<i class="material-icons right ">create</i>Edit Company'.html_safe, edit_company_path(company), class: 'waves-effect waves-light btn-small'  %></td>
-	    <td><%= link_to '<i class="material-icons right">delete_forever</i>Delete'.html_safe, company_path(company), method: :delete, 
+	    <td><%= link_to '<i class="material-icons right">delete_forever</i>Delete'.html_safe, company_path(company), method: :delete,
   					    data:{confirm: "Are you sure"}, class: 'waves-effect waves-light btn-small'  %></td>
   					    <% end %>
 	  </tr>
@@ -55,5 +55,3 @@
 <% if current_user.admin? %>
 <div class="center-align"><%= will_paginate @companies %>  </div>
 <% end %>
-
- 
