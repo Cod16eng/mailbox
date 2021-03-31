@@ -71,7 +71,7 @@
 	    <td><%= post.name %></td>
 	    <td><%= post.received %></td>
 	    <% if current_user.admin? %>
-	    <td><%= mail_to post.company.user.email, post.company.user.email, :subject => "Nuova corrispondenza!", :body =>"Buongiorno #{post.company.user.name},
+	    <td><%= mail_to post.company.user.email, post.company.user.email, :subject => "Nuova corrispondenza per #{post.company.name}!", :body =>"Buongiorno #{post.company.user.name},
 
 Oggi #{Date.today.strftime("%d %b %Y")} e’ stata caricata la nuova corrispondenza ricevuta dalla società #{post.company.name} .
 
