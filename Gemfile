@@ -51,6 +51,6 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'carrierwave', '~> 0.9'
+gem 'carrierwave', '~> 1.3'
 gem 'fog-aws'
 gem 'whenever', require: false
